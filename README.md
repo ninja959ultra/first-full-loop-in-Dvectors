@@ -1,5 +1,12 @@
 # first-full-loop-in-Dvectors
 
+This code will excute a plot with a point (bot) that try to achieve to the target
+
+I've used:
+- Dot Product
+- Cross Product
+- Magintude using math.sqrt()
+
 ```
 import math
 import matplotlib.pyplot as plt

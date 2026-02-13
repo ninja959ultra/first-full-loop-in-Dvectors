@@ -14,7 +14,7 @@ import matplotlib.pyplot as plt
 # Based Information
 current_point = (-7,-4)
 bot_direction = (1,0)
-target_point = (8,6)
+target_point = (25,25)
 speed = 2 # m/s
 delta_time = 0.5 # Seconds
 turn_rate = 0.1
@@ -23,8 +23,8 @@ turn_rate = 0.1
 # For plot
 plt.ion()
 fig, ax = plt.subplots()
-ax.set_xlim(-10, 10)
-ax.set_ylim(-10, 10)
+ax.set_xlim(-30, 30)
+ax.set_ylim(-30, 30)
 ax.set_aspect('equal')
 bot, = ax.plot([current_point[0]], [current_point[1]], marker='o', color='red')
 
@@ -64,6 +64,7 @@ while True:
             new_point = (current_point[0]+sx, current_point[1]+sy)
 
             current_point = new_point
+            bot_direction = new_bot_direction
 
 
         elif CPresult < 0: # Move and turn Right
@@ -79,6 +80,8 @@ while True:
             new_point = (current_point[0]+sx, current_point[1]+sy)
 
             current_point = new_point
+            bot_direction = new_bot_direction
+
 
     
     else: # Stay where you are and turn
@@ -113,6 +116,7 @@ while True:
             bot_direction = new_bot_direction
 
     bot.set_data([current_point[0]], [current_point[1]])
+    ax.quiver(current_point[0], current_point[1], bot_direction[0], bot_direction[1], color='blue', scale=5)
     plt.pause(delta_time)
 
 plt.ioff()

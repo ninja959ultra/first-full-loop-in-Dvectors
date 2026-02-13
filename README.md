@@ -13,7 +13,7 @@ import matplotlib.pyplot as plt
 
 # Based Information
 current_point = (-7,-4)
-bot_direction = (1,0)
+bot_direction = (-0.6,-0.8)
 target_point = (25,25)
 speed = 2 # m/s
 delta_time = 0.5 # Seconds
@@ -36,7 +36,7 @@ while True:
     if magintude < 2:
         print('The bot on the target')
         break
-
+    
     target_direction = (sub_point[0]/magintude, sub_point[1]/magintude)
 
     DPresult = bot_direction[0]*target_direction[0] + bot_direction[1]*target_direction[1]
@@ -59,8 +59,8 @@ while True:
             new_dy = bot_direction[0]*math.sin(theta)+bot_direction[1]*math.cos(theta)
             new_bot_direction = (new_dx, new_dy)
 
-            sx = target_direction[0]*speed
-            sy = target_direction[1]*speed
+            sx = bot_direction[0]*speed
+            sy = bot_direction[1]*speed
             new_point = (current_point[0]+sx, current_point[1]+sy)
 
             current_point = new_point
@@ -75,8 +75,8 @@ while True:
             new_dy = bot_direction[0]*math.sin(theta)+bot_direction[1]*math.cos(theta)
             new_bot_direction = (new_dx, new_dy)
 
-            sx = target_direction[0]*speed
-            sy = target_direction[1]*speed
+            sx = bot_direction[0]*speed
+            sy = bot_direction[1]*speed
             new_point = (current_point[0]+sx, current_point[1]+sy)
 
             current_point = new_point
@@ -114,6 +114,11 @@ while True:
             new_bot_direction = (new_dx, new_dy)
 
             bot_direction = new_bot_direction
+
+    
+    if magintude < 15:
+        print('Slowdown')
+        speed = 0.5
 
     bot.set_data([current_point[0]], [current_point[1]])
     ax.quiver(current_point[0], current_point[1], bot_direction[0], bot_direction[1], color='blue', scale=5)

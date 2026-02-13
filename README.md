@@ -1,6 +1,6 @@
 # first-full-loop-in-Dvectors
 
-'''
+```
 import math
 import matplotlib.pyplot as plt
 
@@ -110,4 +110,4 @@ while True:
 
 plt.ioff()
 plt.show()
-'''
+```
